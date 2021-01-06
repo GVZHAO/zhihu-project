@@ -1,0 +1,18 @@
+server:
+  port: 9000
+
+spring:
+  application:
+    name: zhihu-zuul
+  cloud:
+    config:
+      discovery:
+        service-id: zhihu-config
+        enabled: true
+#      uri: http://localhost:8010/
+      name: zhihu-config
+      profile: dev
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/

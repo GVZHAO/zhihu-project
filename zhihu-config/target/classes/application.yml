@@ -1,0 +1,26 @@
+server:
+  port: 8010
+spring:
+  application:
+    name: zhihu-config
+  #使用本地配置得方式
+#  profiles:
+#    active: native
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/GVZHAO/zhihu-config.git
+          search-paths: zhihu-config
+          default-label: main
+#        native:
+#          search-locations: classpath:properties/
+#        git:
+#          uri: https://github.com/miaohangbo/2007-config.git
+#          search-paths: 2007-config
+#          default-label: main
+
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/

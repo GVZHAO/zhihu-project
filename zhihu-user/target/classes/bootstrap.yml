@@ -1,0 +1,24 @@
+server:
+  port: 8082
+
+spring:
+  application:
+    name: zhihu-user
+  cloud:
+    config:
+      discovery:
+        service-id: zhihu-config
+        enabled: true
+#      uri: http://localhost:8010/
+      name: zhihu-config
+      profile: dev
+      #label: main
+eureka:
+  client:
+    service-url:
+      defaultZone: http://localhost:8000/eureka/
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh

@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.UserMapper">
+
+    <resultMap id="baseResp" type="com.qf.pojo.UserInfo">
+        <id property="id" column="id"></id>
+        <result column="name" property="name"></result>
+        <result column="sex" property="sex"></result>
+        <result column="age" property="age"></result>
+        <result column="addr" property="addr"></result>
+        <result column="info" property="info"></result>
+        <result column="img" property="img"></result>
+    </resultMap>
+
+    <insert id="insertUserInfo" parameterType="com.qf.pojo.UserInfo">
+        insert into userinfo values (null,#{name},#{sex},#{age},#{addr},#{info},#{img})
+    </insert>
+
+    <insert id="insertUserInfoAndRegister">
+        insert into middle_register_user values (null,#{registerId},#{userInfoId})
+    </insert>
+
+    <select id="getUserInfoIdByName" resultType="integer">
+        select id from userinfo where name = #{name}
+    </select>
+
+    <select id="findUserInfo" resultMap="baseResp">
+        select * from userinfo where name = #{name};
+    </select>
+</mapper>
+

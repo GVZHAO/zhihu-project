@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.qf.dao.StateMapper">
+
+    <resultMap id="baseResp" type="com.qf.pojo.State">
+        <id property="id" column="id"></id>
+        <result column="UUID" property="UUID"></result>
+        <result column="name" property="name"></result>
+        <result column="tag" property="tag"></result>
+        <result column="date" property="date"></result>
+        <result column="path" property="path"></result>
+        <result column="info" property="info"></result>
+        <result column="hot" property="hot"></result>
+    </resultMap>
+    <select id="findState" resultMap="baseResp">
+        select st.* from register re,state st,middle_user_state mus where re.id = mus.user_id and st.id = mus.state_id and re.username = #{stateName};
+    </select>
+</mapper>
+
